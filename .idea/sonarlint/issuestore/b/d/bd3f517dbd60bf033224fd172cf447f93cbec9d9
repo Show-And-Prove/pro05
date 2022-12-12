@@ -1,0 +1,12 @@
+
+a
+java:S1301F"KReplace this "switch" statement by "if" statements to increase readability.(ÜŸ•
+E
+java:S5411A"*Use the primitive boolean expression here.(¸–İÛøÿÿÿÿ
+O
+java:S3516?"9Refactor this method to not always return the same value.(ÒŞÖ
+N
+java:S1854""8Remove this useless assignment to local variable "sort".(¼¹Ü·
+?
+java:S1481"")Remove this unused "sort" local variable.(¼¹Ü·
+7	java:S131F""Add a default case to this switch.(ÜŸ•
