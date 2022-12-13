@@ -5,13 +5,16 @@ create table board (
 	writer varchar(20) not null,
 	hits int not null,
 	delete_yn char default 'N' not null,
-	created_date TIMESTAMP not null,
-	modified_date TIMESTAMP,
+	created_date TIMESTAMP(0) not null,
+	modified_date TIMESTAMP(0),
 	primary key (id)
 );
 
-select * from board;
-
-commit;
-
-create type enum_board as enum('Y','N');
+create table member(
+	id serial PRIMARY KEY,
+	email varchar(50) not null,
+	password varchar(300) not null,
+	role varchar(30) default 'ROLE_MEMBER',
+	created_date TIMESTAMP(0) default now(),
+	modified_date TIMESTAMP(0) default now()
+);

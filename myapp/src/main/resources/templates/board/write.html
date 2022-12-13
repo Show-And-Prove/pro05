@@ -37,6 +37,7 @@
           <div class="btn_wrap text-center">
             <a th:href="@{/board/list}" class="btn btn-default waves-effect waves-light">글 목록</a>
             <button type="button" onclick="save()" class="btn btn-primary waves-effect waves-light">저장하기</button>
+            <!--<input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" /> POST에 필요한 csrf 파라미터값 -->
           </div>
         </form>
       </div>
