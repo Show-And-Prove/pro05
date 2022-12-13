@@ -6,7 +6,7 @@ import lombok.Getter;
 import java.time.LocalDateTime;
 
 @Getter
-public class BoardResponseDTO {
+public class BoardResponseDto {
 
     private final Long id;
     private String title;
@@ -23,7 +23,7 @@ public class BoardResponseDTO {
 
     private LocalDateTime modifiedDate;
 
-    public BoardResponseDTO(Board entity){
+    public BoardResponseDto(Board entity){
         this.id = entity.getId();
         this.title = entity.getTitle();
         this.content = entity.getContent();

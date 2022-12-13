@@ -1,16 +1,14 @@
 package com.shop.myapp.controller;
 
-import com.shop.myapp.dto.BoardResponseDTO;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import com.shop.myapp.dto.MemberDTO;
+import com.shop.myapp.dto.MemberDto;
 import com.shop.myapp.model.MemberService;
 
 import lombok.AllArgsConstructor;
-import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 @AllArgsConstructor
@@ -31,7 +29,7 @@ public class MemberController {
 
     // 회원가입 처리
     @PostMapping("/user/signup")
-    public String execSignup(MemberDTO memberDTO) {
+    public String execSignup(MemberDto memberDTO) {
         memberService.joinUser(memberDTO);
         return "redirect:/user/login";
     }

@@ -2,8 +2,8 @@ package com.shop.myapp.controller;
 
 import java.util.List;
 
-import com.shop.myapp.dto.BoardRequestDTO;
-import com.shop.myapp.dto.BoardResponseDTO;
+import com.shop.myapp.dto.BoardRequestDto;
+import com.shop.myapp.dto.BoardResponseDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -26,7 +26,7 @@ public class BoardController {
     //게시판 목록 페이지
     @GetMapping("/list")
     public String openBoardList(Model model) {
-        List<BoardResponseDTO> boardList = boardService.findAll();
+        List<BoardResponseDto> boardList = boardService.findAll();
         model.addAttribute("boardList", boardList);
         return "board/list";
     }
@@ -34,7 +34,7 @@ public class BoardController {
     //게시판 글 상세보기
     @GetMapping("/detail")
     public String getBoardDetail(@RequestParam("id") long id, Model model) throws Exception {
-        BoardResponseDTO board = boardService.findById(id);
+        BoardResponseDto board = boardService.findById(id);
         model.addAttribute("board", board);
         return "board/detail";
     }
@@ -47,7 +47,7 @@ public class BoardController {
 
     //게시판 글쓰기
     @PostMapping("/boards")
-    public Long save(@RequestBody final BoardRequestDTO params) {
+    public Long save(@RequestBody final BoardRequestDto params) {
         return boardService.save(params);
         //return "board/list";
     }
@@ -55,14 +55,14 @@ public class BoardController {
     //게시판 글 수정 폼 업로드
     @GetMapping("/update")
     public String updateBoard(@RequestParam("id") long id, Model model) throws Exception {
-        BoardResponseDTO board = boardService.findById(id);
+        BoardResponseDto board = boardService.findById(id);
         model.addAttribute("board", board);
         return "board/update";
     }
 
     //게시판 글 수정 처리하기
     @PostMapping("/update")
-    public Long updateBoardPro(@RequestParam("id") long id, @RequestBody final BoardRequestDTO params) throws Exception {
+    public Long updateBoardPro(@RequestParam("id") long id, @RequestBody final BoardRequestDto params) throws Exception {
         return boardService.update(id, params);
     }
 }

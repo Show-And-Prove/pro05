@@ -9,8 +9,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.thymeleaf.util.StringUtils;
 
-import com.shop.myapp.dto.BoardRequestDTO;
-import com.shop.myapp.dto.BoardResponseDTO;
+import com.shop.myapp.dto.BoardRequestDto;
+import com.shop.myapp.dto.BoardResponseDto;
 import com.shop.myapp.entity.Board;
 import com.shop.myapp.repository.BoardRepository;
 
@@ -24,20 +24,20 @@ public class BoardService {
 
     //글 등록
     @Transactional
-    public Long save(final BoardRequestDTO params) {
+    public Long save(final BoardRequestDto params) {
         Board entity = boardRepository.save(params.toEntity());
         return entity.getId();
     }
 
     //글 목록
-    public List<BoardResponseDTO> findAll() {
+    public List<BoardResponseDto> findAll() {
         Sort sort = Sort.by(Direction.DESC, "id", "createdDate");
         List<Board> list = boardRepository.findAll();
-        return list.stream().map(BoardResponseDTO::new).collect(Collectors.toList());
+        return list.stream().map(BoardResponseDto::new).collect(Collectors.toList());
     }
 
     //글 수정
-    public Long update(final Long id, BoardRequestDTO params) throws Exception{
+    public Long update(final Long id, BoardRequestDto params) throws Exception{
         Board entity = boardRepository.findById(id).orElseThrow(Exception::new);
         entity.update(params.getTitle(), params.getContent(), params.getWriter());
         return id;
@@ -53,14 +53,14 @@ public class BoardService {
 
     //게시글 상세보기
     @Transactional
-    public BoardResponseDTO findById(final Long id) throws Exception{
+    public BoardResponseDto findById(final Long id) throws Exception{
         Board entity = boardRepository.findById(id).orElseThrow(Exception::new);
         entity.increaseHits();
-        return new BoardResponseDTO(entity);
+        return new BoardResponseDto(entity);
     }
 
     //type을 파라미터로 받아 선택처리하는 경우
-    public boolean executeQueryByType(final String type, final Long id, final BoardRequestDTO params) throws Exception{
+    public boolean executeQueryByType(final String type, final Long id, final BoardRequestDto params) throws Exception{
         // INSERT
         if (StringUtils.equals(type, "INSERT")) {
             boardRepository.save(params.toEntity());
