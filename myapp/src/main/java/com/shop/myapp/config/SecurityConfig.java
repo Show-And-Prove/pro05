@@ -56,7 +56,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                     //spring security를 적용하면 모든 POST 방식에 csrf 토큰이 필요함.
                     //config에서 토큰을 무시하기위한 설정
                     //controller, ajax, view에서 설정도 가능함
-                http.csrf()
+                    http.csrf()
                         .ignoringAntMatchers("/board/**");
 
     }

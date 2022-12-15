@@ -34,6 +34,9 @@ dependencies {
 	//security
 	implementation 'org.springframework.boot:spring-boot-starter-security'
 	implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity5'
+
+	//ModelMapper settings - 반복적인 object 간 변환을 간단하게 줄이고 싶을 때
+	implementation 'org.modelmapper:modelmapper:3.1.0'
 }
 
 tasks.named('test') {
