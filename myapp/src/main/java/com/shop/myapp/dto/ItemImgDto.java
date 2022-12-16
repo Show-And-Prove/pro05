@@ -1,6 +1,5 @@
 package com.shop.myapp.dto;
 
-import com.shop.myapp.entity.ItemImg;
 import lombok.Getter;
 import lombok.Setter;
 import org.modelmapper.ModelMapper;
@@ -17,7 +16,5 @@ public class ItemImgDto {
 
     private static ModelMapper modelMapper = new ModelMapper();
 
-    public static ItemImgDto of(ItemImg itemImg){
-        return modelMapper.map(itemImg, ItemImgDto.class);
-    }
+
 }
