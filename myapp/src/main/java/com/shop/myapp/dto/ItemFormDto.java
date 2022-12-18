@@ -1,35 +1,37 @@
 package com.shop.myapp.dto;
 
+
 import com.shop.myapp.constant.ItemSellStatus;
 import com.shop.myapp.entity.Item;
-import com.sun.istack.NotNull;
 import lombok.Getter;
 import lombok.Setter;
 import org.modelmapper.ModelMapper;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
-@Getter
-@Setter
+@Getter @Setter
 public class ItemFormDto {
 
     private Long id;
 
-    @NotNull
+    @NotBlank(message = "상품명은 필수 입력 값입니다.")
     private String itemName;
 
-    @NotNull
+    @NotNull(message = "가격은 필수 입력 값입니다.")
     private Integer price;
 
-    @NotNull
+    @NotBlank(message = "상품 상세는 필수 입력 값입니다.")
     private String itemDetail;
 
-    @NotNull
-    private Integer stockNumber;
+    @NotNull(message = "재고는 필수 입력 값입니다.")
+    private Integer stock;
 
     private ItemSellStatus itemSellStatus;
 
+    // 상품 수정 시 사용되는 멤버변수들
     private List<ItemImgDto> itemImgDtoList = new ArrayList<>();
     private List<Long> itemImgIds = new ArrayList<>();
 
@@ -42,7 +44,6 @@ public class ItemFormDto {
 
     // Entity -> DTO
     public static ItemFormDto of(Item item){
-        return modelMapper.map(item, ItemFormDto.class);
+        return modelMapper.map(item,ItemFormDto.class);
     }
-
 }

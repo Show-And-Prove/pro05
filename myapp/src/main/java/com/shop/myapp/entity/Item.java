@@ -1,42 +1,61 @@
 package com.shop.myapp.entity;
 
+
 import com.shop.myapp.constant.ItemSellStatus;
+import com.shop.myapp.dto.ItemFormDto;
+import com.shop.myapp.exception.OutOfStockException;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "item")
-@Getter
-@Setter
+@Getter @Setter
 @ToString
-public class Item {
+public class Item extends BaseEntity{
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "item_id")
     private Long id;
 
     @Column(nullable = false, length = 50)
     private String itemName;
 
-    @Column(name = "price", nullable = false)
-    private int price;
-
-    @Column(nullable = false)
-    private int stockNumber;
-
     @Lob
     @Column(nullable = false)
     private String itemDetail;
 
+    @Column(nullable = false)
+    private int price;
+
+    @Column(nullable = false)
+    private int stock;
+
     @Enumerated(EnumType.STRING)
     private ItemSellStatus itemSellStatus;
 
-    private LocalDateTime regTime;
-    private LocalDateTime updateTime;
+    public void updateItem(ItemFormDto itemFormDto) {
+        this.itemName = itemFormDto.getItemName();
+        this.price = itemFormDto.getPrice();
+        this.stock = itemFormDto.getStock();
+        this.itemDetail = itemFormDto.getItemDetail();
+        this.itemSellStatus = itemFormDto.getItemSellStatus();
+    }
+
+    public void removeStock(int stock) {
+
+        int restStock = this.stock - stock;
+        if (restStock < 0) {
+            throw new OutOfStockException("상품의 재고가 부족합니다. (현재 재고 수량: " + this.stock + ")");
+        }
+        this.stock = restStock;
+    }
+
+    public void addStock(int stock) {
+        this.stock += stock;
+    }
 
 }

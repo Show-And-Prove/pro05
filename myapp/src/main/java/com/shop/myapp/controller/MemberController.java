@@ -1,5 +1,6 @@
 package com.shop.myapp.controller;
 
+import com.shop.myapp.dto.JoinFormDto;
 import com.shop.myapp.entity.Member;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -16,36 +17,50 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.validation.Valid;
 
-@RequestMapping("/member")
 @Controller
 @RequiredArgsConstructor
+@RequestMapping("/member")
 public class MemberController {
 
-    private final MemberService memberService;
     private final PasswordEncoder passwordEncoder;
+    private final MemberService memberService;
 
-    @GetMapping(value = "/new" )
-    public String memberForm(Model model) {
-        model.addAttribute("memberFormDto", new MemberFormDto());
-        return "member/memberForm";
+    // 회원가입 페이지
+    @GetMapping("/new")
+    public String memberJoinForm(JoinFormDto joinFormDto, Model model) {
+        model.addAttribute("joinFormDto", joinFormDto);
+        return "member/joinForm";
     }
 
-    @PostMapping(value = "/new" )
-    public String newMember(@Valid MemberFormDto memberFormDto, BindingResult bindingResult, Model model) {
+    // 회원가입
+    @PostMapping("/new")
+    public String memberJoin(@Valid JoinFormDto joinFormDto, BindingResult bindingResult, Model model) {
 
         if (bindingResult.hasErrors()) {
-            return "member/memberForm";
+            return "member/joinForm";
         }
 
         try {
-            Member member = Member.createMember(memberFormDto, passwordEncoder);
+            Member member = Member.createMember(joinFormDto, passwordEncoder);
             memberService.saveMember(member);
-        } catch (IllegalStateException e) {
+        } catch (Exception e) {
             model.addAttribute("errorMessage", e.getMessage());
-            return "member/memberForm";
+            return "member/joinForm";
         }
         return "redirect:/";
+    }
 
+    // 로그인 페이지
+    @GetMapping("/login")
+    public String memberLogin() {
+        return "member/loginForm";
+    }
+
+    // 로그인 실패
+    @GetMapping("/login/fail")
+    public String memberLoginFail(Model model) {
+        model.addAttribute("loginFailMsg", "아이디 또는 비밀번호를 확인해주세요.");
+        return "member/loginForm";
     }
 
 }
