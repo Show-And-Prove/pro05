@@ -1,5 +1,3 @@
 
 Z
 java:S1874"DRemove this use of "WebSecurityConfigurerAdapter"; it is deprecated.(Ë¶Ï“
-[
-java:S53445">Don't use the default "PasswordEncoder" relying on plain-text.(ŞÊóÄ8ë±õèÒ0
