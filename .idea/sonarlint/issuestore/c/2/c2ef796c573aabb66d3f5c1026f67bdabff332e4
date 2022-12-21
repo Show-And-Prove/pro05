@@ -1,3 +1,5 @@
 
-m
-java:S1192"RDefine a constant instead of duplicating this literal "member/memberForm" 3 times.(±ŞÏøÿÿÿÿ
+r
+java:S1192 "PDefine a constant instead of duplicating this literal "member/joinForm" 3 times.(ÿêÉ‚şÿÿÿÿ8›ÚÊ‘Ó0
+_
+java:S1128"=Remove this unused import 'com.shop.myapp.dto.MemberFormDto'.(ŠÌºıúÿÿÿÿ8©ÚÊ‘Ó0

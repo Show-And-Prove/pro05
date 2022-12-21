@@ -21,8 +21,6 @@ configurations {
 	compileOnly {
 		extendsFrom annotationProcessor
 	}
-	// querydsl 이 compileClassPath 를 상속하도록 설정
-	querydsl.extendsFrom compileClasspath
 }
 
 repositories {
@@ -43,6 +41,7 @@ dependencies {
 	annotationProcessor 'org.projectlombok:lombok'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 
+	//junit test
 	testImplementation('junit:junit:4.13.2')
 	//security
 	implementation 'org.springframework.boot:spring-boot-starter-security'
@@ -50,6 +49,7 @@ dependencies {
 
 	//ModelMapper settings - 반복적인 object 간 변환을 간단하게 줄이고 싶을 때
 	implementation 'org.modelmapper:modelmapper:3.1.0'
+
 	// 3. querydsl dependencies 추가
 	implementation "com.querydsl:querydsl-jpa:${queryDslVersion}"
 	implementation "com.querydsl:querydsl-apt:${queryDslVersion}"
@@ -72,6 +72,11 @@ querydsl {
 // build 시 사용할 sourceSet 추가
 sourceSets {
 	main.java.srcDir querydslDir
+}
+
+// compile시 querydsl이 상속받도록
+configurations {
+	querydsl.extendsFrom compileClasspath
 }
 
 // querydsl 컴파일시 사용할 옵션 설정

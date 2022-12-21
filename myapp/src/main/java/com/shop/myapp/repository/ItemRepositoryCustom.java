@@ -14,3 +14,4 @@ public interface ItemRepositoryCustom {
     // @QueryProjection 을 이용하여 바로 Dto 객체 반환
     Page<MainItemDto> getMainItemPage(ItemSearchDto itemSearchDto, Pageable pageable);
 }
+

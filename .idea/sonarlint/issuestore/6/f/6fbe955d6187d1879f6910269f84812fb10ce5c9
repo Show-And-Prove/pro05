@@ -1,5 +1,5 @@
 
-œ
-java:S1186"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(•½ñßıÿÿÿÿ
 Z
-java:S1874"DRemove this use of "WebSecurityConfigurerAdapter"; it is deprecated.(Ë¶Ï“
+java:S1874"DRemove this use of "WebSecurityConfigurerAdapter"; it is deprecated.(Ë¶Ï“
+[
+java:S53445">Don't use the default "PasswordEncoder" relying on plain-text.(ŞÊóÄ8ë±õèÒ0
