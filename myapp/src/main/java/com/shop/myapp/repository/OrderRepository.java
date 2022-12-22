@@ -13,11 +13,12 @@ public interface OrderRepository extends JpaRepository<Order, Long> {
 
     @Query(value = "select o from Order o " +
             "where o.member.email = :email " +
-            "order by o.orderDate desc", nativeQuery = true)
+            "order by o.orderDate desc", nativeQuery = false)
     List<Order> findOrders(@Param("email") String email, Pageable pageable);
 
     @Query(value = "select count(o) from Order o " +
-            "where o.member.email = :email", nativeQuery = true)
+            "where o.member.email = :email", nativeQuery = false)
+    //nativeQuery = false ->
     Long countOrder(@Param("email") String email);
 
 }
