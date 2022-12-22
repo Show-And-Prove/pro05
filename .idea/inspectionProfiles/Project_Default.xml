@@ -4,7 +4,7 @@
     <inspection_tool class="HtmlUnknownAttribute" enabled="true" level="WARNING" enabled_by_default="true">
       <option name="myValues">
         <value>
-          <list size="18">
+          <list size="22">
             <item index="0" class="java.lang.String" itemvalue="th:name" />
             <item index="1" class="java.lang.String" itemvalue="th:authentication" />
             <item index="2" class="java.lang.String" itemvalue="sec:authorize" />
@@ -23,6 +23,10 @@
             <item index="15" class="java.lang.String" itemvalue="th:unless" />
             <item index="16" class="java.lang.String" itemvalue="th:for" />
             <item index="17" class="java.lang.String" itemvalue="th:object" />
+            <item index="18" class="java.lang.String" itemvalue="layout:decorate" />
+            <item index="19" class="java.lang.String" itemvalue="th:classappend" />
+            <item index="20" class="java.lang.String" itemvalue="th:src" />
+            <item index="21" class="java.lang.String" itemvalue="th:content" />
           </list>
         </value>
       </option>
@@ -45,7 +49,7 @@
       <option name="myCustomValuesEnabled" value="true" />
     </inspection_tool>
     <inspection_tool class="com.haulmont.jpb.CompositeIdClassSerializable" enabled="true" level="WARNING" enabled_by_default="true">
-      <option name="j">
+      <option name="n">
         <Project />
       </option>
     </inspection_tool>
