@@ -12,7 +12,8 @@
     <h2 class="title">게시판 글 쓰기</h2>
     <th:block layout:fragment="content">
       <div class="card-content">
-        <form class="form-horizontal" id="form">
+        <form class="form-horizontal" id="form" >
+          <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
           <div class="form-group">
             <label for="title" class="col-sm-2 control-label">제목</label>
             <div class="col-sm-10">
@@ -103,6 +104,7 @@
 				location.href = '/board/list';
 
 			}).catch(error => {
+			    console.log(error);
 				alert('오류가 발생하였습니다.');
 			});
 		}

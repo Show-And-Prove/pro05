@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="ko">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <!-- user-scalable -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <title>jQuery - 모바일 웹 앱1</title>
+  <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+  <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+  <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+  <script src="js/slider/jquery.flexslider.js"></script>
+  <script src="js/custom.js"></script>
+  <style>
+    .page_tit { font-size: 5vw; clear: both; padding-bottom: 2rem; }
+    .ui-header .ui-title { text-align: center; }
+    </style>
+</head>
+<body class="ui-mobile-viewport ui-overlay-a">
+
+<!-- 메인 페이지 -->
+<div id="page0" data-role="page" class="ui-page-theme-a ui-page-active">
+  <header data-role="header" class="ui-header" data-theme="a">
+    <h1 role="heading" class="ui-title">메인 페이지</h1>
+    <a href="#login" data-role="button" data-rel="dialog" data-icon="user" class="ui-btn-right" sec:authorize="isAnonymous()">로그인</a>
+    <a href="#" data-role="button" data-rel="dialog" data-icon="user" class="ui-btn-right" sec:authorize="isAuthenticated()">로그아웃</a>
+  </header>
+  <!-- slider -->
+  <div class="flex-container">
+    <div class="flexslider">
+      <ul class="slides">
+        <li><img src="1_1.png" alt="slide"></li>
+        <li><img src="1_1.png" alt="slide"></li>
+      </ul>
+    </div>
+  </div>
+  <!-- /slider -->
+
+  <div data-role="content" role="main" class="ui-content">
+    <h1 class="page_tit">여기는 메인 페이지 입니다.</h1>
+    <ul data-role="listview" class="ui-list">
+      <li><a href="#page1" data-transition="fade">페이지1</a></li>
+      <li><a href="#page2" data-transition="fade">페이지2</a></li>
+      <li><a href="#page3" data-transition="fade">페이지3</a></li>
+      <li><a href="#login" data-transition="fade">로그인</a></li>
+    </ul>
+    <th:block th:each="item, status: ${items.getContent()}">
+      <div class="col-md-4 margin">
+        <div class="card">
+          <a th:href="'/item/' +${item.id}" class="text-dark">
+            <img th:src="${item.imgUrl}" class="card-img-top" th:alt="${item.itemName}" height="300">
+            <div class="card-body">
+              <h4 class="card-title">[[${item.itemName}]]</h4>
+              <p class="card-text">[[${item.itemDetail}]]</p>
+              <h3 class="card-title text-danger">[[${item.price}]]원</h3>
+            </div>
+          </a>
+        </div>
+      </div>
+    </th:block>
+  </div>
+  <footer data-role="footer" class="ui-footer" data-theme="a" data-position="fixed">
+    <h3>여기는 푸터 영역입니다.</h3>
+  </footer>
+</div>
+<!-- 메인 페이지 -->
+
+<!-- 서브 1 -->
+<div id="page1" data-role="page" class="ui-page-theme-a">
+  <header data-role="header" class="ui-header" data-theme="a">
+    <a href="#page0" data-role="button" class="ui-btn ui-btn-left ui-icon-back ui-btn-icon-left" role="button">홈으로</a>
+    <h1 class="ui-title">서브1</h1>
+  </header>
+  <div data-role="content" role="sub" class="ui-content">
+    <p>여기는 서브 컨텐츠1 입니다.</p>
+    <a href="#page0" class="ui-btn ui-corner-all ui-shadow ui-btn-inline">메인</a>
+    <a href="#page2" class="ui-btn ui-corner-all ui-shadow ui-btn-inline">페이지 2</a>
+    <a href="#page3" class="ui-btn ui-corner-all ui-shadow ui-btn-inline">페이지 3</a>
+  </div>
+  <footer data-role="footer" class="ui-footer" data-theme="a" data-position="fixed">
+    <h3>여기는 푸터 영역입니다.</h3>
+  </footer>
+</div>
+<!-- 서브 1 -->
+
+<!-- 서브 2 -->
+<div id="page2" data-role="page" class="ui-page-theme-a">
+  <header data-role="header" class="ui-header" data-theme="a">
+    <a href="#page1" data-role="button" class="ui-btn ui-btn-left ui-icon-back ui-btn-icon-left" role="button">뒤로</a>
+    <h1 class="ui-title">서브2</h1>
+  </header>
+  <div data-role="content" role="sub" class="ui-content">
+    <p>여기는 서브 컨텐츠2 입니다.</p>
+    <a href="#page0" class="ui-btn ui-corner-all ui-shadow ui-btn-inline">메인</a>
+    <a href="#page1" class="ui-btn ui-corner-all ui-shadow ui-btn-inline">페이지 1</a>
+    <a href="#page3" class="ui-btn ui-corner-all ui-shadow ui-btn-inline">페이지 3</a>
+  </div>
+  <footer data-role="footer" class="ui-footer" data-theme="a" data-position="fixed">
+    <h3>여기는 푸터 영역입니다.</h3>
+  </footer>
+</div>
+<!-- 서브 2 -->
+
+<!-- 서브 3 -->
+<div id="page3" data-role="page" class="ui-page-theme-a">
+  <header data-role="header" class="ui-header" data-theme="a">
+    <a href="#page2" data-role="button" class="ui-btn ui-btn-left ui-icon-back ui-btn-icon-left" role="button">뒤로</a>
+    <h1 class="ui-title">서브3</h1>
+  </header>
+  <div data-role="content" role="sub" class="ui-content">
+    <p>여기는 서브 컨텐츠3 입니다.</p>
+    <a href="#page0" class="ui-btn ui-corner-all ui-shadow ui-btn-inline">메인</a>
+    <a href="#page1" class="ui-btn ui-corner-all ui-shadow ui-btn-inline">페이지 1</a>
+    <a href="#page2" class="ui-btn ui-corner-all ui-shadow ui-btn-inline">페이지 2</a>
+  </div>
+  <footer data-role="footer" class="ui-footer" data-theme="a" data-position="fixed">
+    <h3>여기는 푸터 영역입니다.</h3>
+  </footer>
+</div>
+<!-- 서브 3 -->
+
+<!-- 로그인 페이지 -->
+<div id="login" data-role="page" class="ui-page-theme-a">
+  <header data-role="header" class="ui-header" data-theme="a">
+    <a href="#page0" data-role="button" class="ui-btn ui-btn-left ui-icon-back ui-btn-icon-left" role="button">홈으로</a>
+    <h1 class="ui-title">로그인</h1>
+  </header>
+  <div data-role="content" role="sub" class="ui-content">
+    <div data-role="fieldcontain">
+      <label for="id">아이디</label>
+      <input type="text" id="id" name="id"><br>
+      <label for="pw">비밀번호</label>
+      <input type="password" id="pw" name="pw">
+    </div>
+    <div class="ui-grid-a">
+      <div class="ui-block-a">
+        <a href="#page0" data-role="button">로그인</a>
+      </div>
+      <div class="ui-block-b">
+        <a href="#signup" data-role="button">회원가입</a>
+      </div>
+    </div>
+  </div>
+  <footer data-role="footer" class="ui-footer" data-theme="a" data-position="fixed">
+    <h3>여기는 푸터 영역입니다.</h3>
+  </footer>
+</div>
+<!-- 로그인 페이지 -->
+
+
+
+</body>
+</html>
