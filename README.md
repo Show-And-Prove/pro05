@@ -1,38 +1,38 @@
-# 프로젝트 기획
-....
+# Spring Boot Project 
 
-# 프로젝트 환경
-front : html5 + css + javascript + jQuery + bootstrap
-back : Spring Boot Gradle + Spring security + thymeleaf
-IDE : intelliJ
-DBMS : Postgresql
-Mapper : JPA
-Configuration : JAVA
-......
+## 프로젝트 기획
+Spring Boot 를 이용한 쇼핑몰 기능 구현
 
-# 프로젝트 설계
-- 데이터베이스 설계 > 테이블 설계표와 ERD
-- 클래스 설계 > DTO(VO) + DAO + CONTROLLER + SERVICE + UTIL + 클래스 다이어그램 + 시퀀스 다이어그램
-- 화면 설계 > 프로토타입 및 스토리보드
-- 기능 및 흐름 설계 > 흐름도
+## 개발 환경
 
-# 프로젝트 구현
-- 화면 구현(화면구성)
-- DB 구현(SQL)
-- 기능 단위 테스트(junit)
-- 클래스 구현(Controller, Service, Servlet, dto, util)
-- 데이터 입출력 구현(DAO)
+### ★Back End
+##### - Spring Boot 2.7.6
+##### - intelliJ(IDE)
+##### - Java 8, JDK 1.8
+##### - ORM : JPA/Hibernate
+##### - Build : Gradle
 
+### ★Front End
+##### - Bootstrap CSS Framework
+##### - Thymeleaf(Template Engine)
+##### - jQuery
 
-# 프로젝트 테스트와 수정 및 보완
-- 인터페이스(UI) 테스트
-- 통합 테스트 : 모든 기능과 화면 요소에 대한 전반적인 테스트
-- 이슈도출 및 개선 : 화면에 대한 수정사항과 코드인스펙션 돌려서 개선할 내용을 수립
+### ★Database
+##### - Postgresql
 
-# 프로젝트 배포와 인계 절차
-- 애플리케이션 패키징(하나의 프로젝트로 묶음 war or jar)
-- 애플리케이션 배포 (원격에 의한 배포, FTP를 통한 배포, telnet(putty)을 통한 배포 ......)
-- 인수 테스트 : 클라이언트에게 해당 프로젝트에 대한 시연을 시행하고, 확인 받은 후 해당 메뉴얼이나 가이드, 산출물을 전달하는 과정
+### ★Server
+##### - Tomcat(내장)
+
+------
+## 프로젝트 설계
+#### ★Gradle Dependency 추가
+![image](https://user-images.githubusercontent.com/112448467/212805358-5c851c7d-429a-469d-88b0-af356ad43c2a.png)
+
+#### ★JPA 설정
+![image](https://user-images.githubusercontent.com/112448467/212805547-b4f4aee6-483f-4965-8ebe-0c3403390376.png)
+
+#### ★ERD
+![image](https://user-images.githubusercontent.com/112448467/212805873-4e935d0d-6ab7-40e1-b7e5-1378585f7d71.png)
 
 
 
