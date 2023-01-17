@@ -34,6 +34,7 @@ Spring Boot 를 이용한 쇼핑몰 기능 구현
 #### ★ERD
 ![image](https://user-images.githubusercontent.com/112448467/212805873-4e935d0d-6ab7-40e1-b7e5-1378585f7d71.png)
 
+
 ------
 ## 주요 기능
 
