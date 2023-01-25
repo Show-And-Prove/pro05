@@ -1,7 +1,7 @@
 # Spring Boot Project 
 
 ## 프로젝트 기획
-Spring Boot 를 이용한 쇼핑몰 기능 구현
+Spring Boot 쇼핑몰 기능 구현(상품등록, 조회, 수정, 장바구니 추가, 구매)
 
 ## 개발 환경
 
