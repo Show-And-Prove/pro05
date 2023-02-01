@@ -17,7 +17,7 @@ Spring Boot 쇼핑몰 기능 구현(상품등록, 조회, 수정, 삭제 | 장�
 ##### - Thymeleaf(Template Engine)
 ##### - jQuery
 
-### ★Database
+### ★RDBMS(Relational DataBase Management System)
 ##### - Postgresql
 
 ### ★Server
